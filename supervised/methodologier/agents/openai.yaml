@@ -1,0 +1,4 @@
+interface:
+  display_name: "Methodologier"
+  short_description: "Create and maintain durable project seed-insights documents"
+  default_prompt: "Use $methodologier to create or update the durable seed-insights document for this project."

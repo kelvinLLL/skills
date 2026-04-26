@@ -4,7 +4,7 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-IGNORE_DIRS = {".git", "vendor", "_archive", "__pycache__"}
+IGNORE_DIRS = {".git", ".pytest_cache", "vendor", "_archive", "__pycache__", "supervised"}
 
 
 def parse_frontmatter(path: Path) -> dict[str, str]:
@@ -27,20 +27,19 @@ def parse_frontmatter(path: Path) -> dict[str, str]:
     return data
 
 
-def main() -> int:
-    errors: list[str] = []
+def collect_skill_dirs(root: Path) -> list[Path]:
     skill_dirs: list[Path] = []
-
-    for child in sorted(ROOT.iterdir()):
+    for child in sorted(root.iterdir()):
         if not child.is_dir() or child.name in IGNORE_DIRS:
             continue
         skill_file = child / "SKILL.md"
         if skill_file.exists():
             skill_dirs.append(child)
+    return skill_dirs
 
-    if not skill_dirs:
-        errors.append("no root skill directories found")
 
+def validate_skill_dirs(skill_dirs: list[Path]) -> list[str]:
+    errors: list[str] = []
     for skill_dir in skill_dirs:
         skill_file = skill_dir / "SKILL.md"
         try:
@@ -62,6 +61,19 @@ def main() -> int:
             errors.append(f"{skill_file}: missing description")
         elif len(description) > 1024:
             errors.append(f"{skill_file}: description exceeds 1024 chars")
+    return errors
+
+
+def main() -> int:
+    root_skill_dirs = collect_skill_dirs(ROOT)
+    supervised_root = ROOT / "supervised"
+    supervised_skill_dirs = collect_skill_dirs(supervised_root) if supervised_root.exists() else []
+
+    errors: list[str] = []
+    if not root_skill_dirs:
+        errors.append("no root skill directories found")
+    errors.extend(validate_skill_dirs(root_skill_dirs))
+    errors.extend(validate_skill_dirs(supervised_skill_dirs))
 
     if errors:
         print("Skill validation failed:")
@@ -69,9 +81,13 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print(f"Validated {len(skill_dirs)} root skills.")
-    for skill_dir in skill_dirs:
+    print(f"Validated {len(root_skill_dirs)} root skills.")
+    for skill_dir in root_skill_dirs:
         print(f"- {skill_dir.name}")
+    if supervised_skill_dirs:
+        print(f"Validated {len(supervised_skill_dirs)} supervised skills.")
+        for skill_dir in supervised_skill_dirs:
+            print(f"- supervised/{skill_dir.name}")
     return 0
 
 

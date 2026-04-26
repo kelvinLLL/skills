@@ -12,6 +12,7 @@ This repository keeps my own installable skills at the repository root and track
 - `ubiquitous-language` - fast glossary extraction and ambiguity cleanup.
 - `architecture-review` - deep-module architecture review and refactor candidate discovery.
 - `interface-design` - software API/module interface design alternatives.
+- `skill-supervisor` - global skill usage logging and evaluation.
 
 Install a root skill with the Skills CLI style used by common SKILL.md repositories:
 
@@ -20,6 +21,34 @@ npx skills@latest add kelvinLLL/skills/architecture-review
 ```
 
 Replace `architecture-review` with any root skill folder name.
+
+## Supervised Skills
+
+The root skill folders are the clean public versions. `supervised/` contains generated personal-use copies of my own working skills with a short Skill Supervisor footer appended.
+
+The footer asks the agent to append sanitized metadata to:
+
+```text
+~/.codex/skill-supervisor/usage.jsonl
+```
+
+Install a supervised copy when I want usage telemetry:
+
+```bash
+npx skills@latest add kelvinLLL/skills/supervised/architecture-review
+```
+
+Regenerate supervised copies after editing clean skills:
+
+```bash
+python3 scripts/build_supervised_skills.py
+```
+
+Evaluate logs:
+
+```bash
+python3 skill-supervisor/scripts/evaluate_usage.py
+```
 
 ## Vendor Submodules
 
@@ -46,4 +75,4 @@ git submodule update --init --recursive
 python3 scripts/validate-skills.py
 ```
 
-The validator checks that root skill folders have `SKILL.md`, required frontmatter, matching names, and description lengths suitable for agent discovery.
+The validator checks root and supervised skill folders for `SKILL.md`, required frontmatter, matching names, and description lengths suitable for agent discovery.

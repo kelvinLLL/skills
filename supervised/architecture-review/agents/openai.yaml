@@ -1,0 +1,4 @@
+interface:
+  display_name: "Architecture Review"
+  short_description: "Find deep-module and interface-boundary improvements"
+  default_prompt: "Use $architecture-review to inspect this repo and propose high-leverage architecture improvements."
