@@ -1,0 +1,4 @@
+interface:
+  display_name: "Interface Design"
+  short_description: "Compare software API and module interface shapes"
+  default_prompt: "Use $interface-design to design two or three alternative interfaces for this module and recommend one."

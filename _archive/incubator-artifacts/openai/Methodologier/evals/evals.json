@@ -1,0 +1,23 @@
+{
+  "skill_name": "methodologier",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我们准备做一个复杂的工作流框架，请在正式开发前帮我生成一个高质量 seed insight 文档，重点避免模块过度耦合、方便以后扩展 tool 节点，并明确未来 agent 应该如何依据这个文档做设计。",
+      "expected_output": "Should ask a few high-value scoping questions or state reasonable assumptions, then generate a structured seed insight document with sections for constraints, defaults, architecture heuristics, delivery heuristics, and future-agent instructions. The guidance should be specific to framework extensibility and decoupling, not generic slogans.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "请审视当前代码仓，提炼已经存在的优秀架构模式，更新 docs/methodologier/seed-insights.md，只保留未来还会反复指导实现的 insight。",
+      "expected_output": "Should operate in reflection mode, inspect project evidence, classify reusable insights, merge them into the seed document without bloat, and report what changed plus unresolved questions. It should avoid praising everything and avoid recording one-off implementation details.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "我们已经有 CLAUDE.md、AGENTS.md 和一些 specs 文档。不要重复造轮子，帮我构建一个能够与这些文档配合工作的 methodology 文档。",
+      "expected_output": "Should align with existing guidance files, explain where durable methodology belongs versus always-on instructions versus task-specific specs, and produce or update a single canonical insight document instead of duplicating large sections across files.",
+      "files": []
+    }
+  ]
+}
