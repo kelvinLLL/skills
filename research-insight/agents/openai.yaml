@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Insight"
+  short_description: "Write structured Chinese technical insight reports"
+  default_prompt: "Use $research-insight to analyze this paper, report, or repo and write a structured Chinese insight document."

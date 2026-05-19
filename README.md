@@ -12,6 +12,7 @@ This repository keeps my own installable skills at the repository root and track
 - `ubiquitous-language` - fast glossary extraction and ambiguity cleanup.
 - `architecture-review` - deep-module architecture review and refactor candidate discovery.
 - `interface-design` - software API/module interface design alternatives.
+- `research-insight` - structured Chinese insight reports for papers, reports, surveys, and technical repositories.
 - `skill-supervisor` - global skill usage logging and evaluation.
 
 Install a root skill with the Skills CLI style used by common SKILL.md repositories:
