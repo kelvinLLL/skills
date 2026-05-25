@@ -1,4 +1,0 @@
-interface:
-  display_name: "Skill Supervisor"
-  short_description: "Evaluate skill usefulness from global usage logs"
-  default_prompt: "Use $skill-supervisor to evaluate my skill usage logs and recommend which skills to improve."

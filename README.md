@@ -2,58 +2,39 @@
 
 Personal Codex-first skill library.
 
-This repository keeps my own installable skills at the repository root and tracks important upstream skill projects under `vendor/` as submodules.
+This repository keeps installable skills grouped by source:
 
-## Installable Skills
+- `original/` - skills I built from scratch.
+- `adapted/` - skills adapted from external ideas or upstream skill libraries.
+- `vendor/` - upstream projects tracked directly as submodules.
 
-- `ai-daily-report` - Chinese AI industry daily report workflow with source validation.
-- `methodologier` - durable project methodology and seed-insights workflow.
-- `domain-model` - domain language, `CONTEXT.md`, and ADR decision capture.
-- `ubiquitous-language` - fast glossary extraction and ambiguity cleanup.
-- `architecture-review` - deep-module architecture review and refactor candidate discovery.
-- `interface-design` - software API/module interface design alternatives.
-- `research-insight` - structured Chinese insight reports for papers, reports, surveys, and technical repositories.
-- `skill-supervisor` - global skill usage logging and evaluation.
+## Original Skills
 
-Install a root skill with the Skills CLI style used by common SKILL.md repositories:
+- `original/ai-daily-report` - Chinese AI industry daily report workflow with source validation.
+- `original/methodologier` - durable project methodology and seed-insights workflow.
+- `original/research-insight` - structured Chinese insight reports for papers, reports, surveys, and technical repositories.
 
-```bash
-npx skills@latest add kelvinLLL/skills/architecture-review
-```
+## Adapted Skills
 
-Replace `architecture-review` with any root skill folder name.
+- `adapted/architecture-review` - deep-module architecture review and refactor candidate discovery.
+- `adapted/domain-model` - domain language, `CONTEXT.md`, and ADR decision capture.
+- `adapted/interface-design` - software API/module interface design alternatives.
+- `adapted/ubiquitous-language` - fast glossary extraction and ambiguity cleanup.
 
-## Supervised Skills
+These are kept as local working versions. Their exact upstream ancestry may be mixed or historical, so the folder marks them as adapted rather than direct vendor copies.
 
-The root skill folders are the clean public versions. `supervised/` contains generated personal-use copies of my own working skills with a short Skill Supervisor footer appended.
-
-The footer asks the agent to append sanitized metadata to:
-
-```text
-~/.codex/skill-supervisor/usage.jsonl
-```
-
-Install a supervised copy when I want usage telemetry:
+Install a skill with the Skills CLI style used by common `SKILL.md` repositories:
 
 ```bash
-npx skills@latest add kelvinLLL/skills/supervised/architecture-review
+npx skills@latest add kelvinLLL/skills/original/ai-daily-report
+npx skills@latest add kelvinLLL/skills/adapted/domain-model
 ```
 
-Regenerate supervised copies after editing clean skills:
-
-```bash
-python3 scripts/build_supervised_skills.py
-```
-
-Evaluate logs:
-
-```bash
-python3 skill-supervisor/scripts/evaluate_usage.py
-```
+Replace the path with any concrete skill folder under `original/` or `adapted/`.
 
 ## Vendor Submodules
 
-These are tracked as upstream references, not copied into root installable folders:
+These are tracked as upstream references and should stay close to upstream:
 
 - `vendor/superpowers` -> `obra/superpowers`
 - `vendor/andrej-karpathy-skills` -> `forrestchang/andrej-karpathy-skills`
@@ -66,14 +47,10 @@ After cloning this repository:
 git submodule update --init --recursive
 ```
 
-## Archive
-
-`_archive/incubator-artifacts/` contains earlier drafting artifacts from the local incubator. They are kept for reference only and are not meant to be installed as skills.
-
 ## Validate
 
 ```bash
 python3 scripts/validate-skills.py
 ```
 
-The validator checks root and supervised skill folders for `SKILL.md`, required frontmatter, matching names, and description lengths suitable for agent discovery.
+The validator checks installable skills under `original/` and `adapted/` for `SKILL.md`, required frontmatter, matching names, and description lengths suitable for agent discovery.

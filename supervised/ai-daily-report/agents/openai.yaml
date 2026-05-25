@@ -1,4 +1,0 @@
-interface:
-  display_name: "AI Daily Report"
-  short_description: "Generate sourced AI industry daily reports"
-  default_prompt: "Use $ai-daily-report to research today AI industry developments and produce a sourced Chinese daily report with verified dates and URLs."

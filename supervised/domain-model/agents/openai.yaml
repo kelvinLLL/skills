@@ -1,4 +1,0 @@
-interface:
-  display_name: "Domain Model"
-  short_description: "Clarify project language, CONTEXT.md, and ADR-worthy decisions"
-  default_prompt: "Use $domain-model to clarify the domain language for this plan before we implement it."

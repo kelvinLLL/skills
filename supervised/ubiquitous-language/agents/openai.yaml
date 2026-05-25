@@ -1,4 +1,0 @@
-interface:
-  display_name: "Ubiquitous Language"
-  short_description: "Extract and clean up project domain vocabulary"
-  default_prompt: "Use $ubiquitous-language to extract the domain terms and ambiguities from this conversation or repo."

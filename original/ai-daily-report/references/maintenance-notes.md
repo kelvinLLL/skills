@@ -222,7 +222,7 @@ Anthropic 的 citations 文档强调：引用的价值不只是“看起来有�
 
 ### 这轮已经做的
 
-- 保留新版 `skills/ai-daily-report/`
+- 保留新版 `skills/original/ai-daily-report/`
 - 删除旧版重复 skill
 - 增加 `agents/openai.yaml`
 - 补一份面向维护者的调研与工程化说明
@@ -249,7 +249,7 @@ Anthropic 的 citations 文档强调：引用的价值不只是“看起来有�
 示例：
 
 ```bash
-python3 skills/ai-daily-report/scripts/check_report.py 2026-03-23-AI日报.md --target-date 2026-03-23
+python3 skills/original/ai-daily-report/scripts/check_report.py 2026-03-23-AI日报.md --target-date 2026-03-23
 ```
 
 #### 2. `scripts/grade_eval.py`
@@ -266,8 +266,8 @@ python3 skills/ai-daily-report/scripts/check_report.py 2026-03-23-AI日报.md --
 示例：
 
 ```bash
-python3 skills/ai-daily-report/scripts/grade_eval.py \
-  --eval-file skills/ai-daily-report/evals/evals.json \
+python3 skills/original/ai-daily-report/scripts/grade_eval.py \
+  --eval-file skills/original/ai-daily-report/evals/evals.json \
   --eval-id 1 \
   --report 2026-03-19-AI日报-v3.md
 ```
