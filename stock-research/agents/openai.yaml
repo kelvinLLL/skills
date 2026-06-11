@@ -1,0 +1,4 @@
+interface:
+  display_name: "Stock Research"
+  short_description: "Research stocks with sourced fundamental analysis"
+  default_prompt: "Use $stock-research to analyze this public company or ticker with sourced fundamentals, valuation, risks, and sentiment."
